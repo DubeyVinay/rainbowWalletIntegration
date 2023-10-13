@@ -78,7 +78,11 @@ export default function Home() {
         <div className="text-center">
           <button
             onClick={() => {
-              write?.();
+              if (address != undefined) {
+                write?.();
+              } else {
+                alert("Please Connect Metamask First!");
+              }
             }}
             className="p-2 bg-fuchsia-950 text-white font-bold text-lg rounded"
           >
@@ -91,10 +95,11 @@ export default function Home() {
 
           <button
             onClick={() => {
-              debugger;
-              console.log(typeof data === "bigint");
-              setBalance(typeof data === "bigint" ? data : undefined);
-              console.log(balance);
+              if (address != undefined) {
+                setBalance(typeof data === "bigint" ? data : undefined);
+              } else {
+                alert("Please Connect Metamask First!");
+              }
             }}
             className="p-2 bg-fuchsia-950 text-white font-bold text-lg rounded"
           >
